@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: php-fpm
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: php-fpm
+        track: stable
+    spec:
+      containers:
+        - name: php-fpm
+          image: puraskar/php-fpm:1.0.3
+          ports:
+          - containerPort: 9000

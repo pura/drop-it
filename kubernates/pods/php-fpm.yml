@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: php-fpm
+  labels:
+    app: php-fpm
+spec:
+  containers:
+    - name: php-fpm
+      image: puraskar/php-fpm:latest
+      ports:
+        - name: php-cgi
+          containerPort: 9000
+      resources:
+        limits:
+          cpu: 0.2
+          memory: "10Mi"

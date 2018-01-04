@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  containers:
+    - name: nginx
+      image: puraskar/nginx:latest
+      lifecycle:
+        preStop:
+          exec:
+            command: ["/usr/sbin/nginx","-s","quit"]
+      ports:
+        - name: http
+          containerPort: 8080
+        - name: https
+          containerPort: 443
+      resources:
+        limits:
+          cpu: 0.2
+          memory: "10Mi"
