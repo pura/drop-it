@@ -58,3 +58,5 @@ ADD php-fpm.conf /etc/php-fpm.d/www.conf
 EXPOSE 9000
 
 CMD ["php-fpm", "-F"]
+
+WORKDIR /var/www/html/drop-it

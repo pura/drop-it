@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: dropit-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dropit
+    spec:
+      containers:
+      - name: dropit-server
+        image: puraskar/dropit-nginx:1.7
+        ports:
+          - name: http
+            containerPort: 8080
+          - name: https
+            containerPort: 443
+        volumeMounts:
+        - mountPath: /var/www/html/drop-it
+          name: appdir
+      - name: dropit-app
+        image: puraskar/dropit-app:1.6
+        volumeMounts:
+        - mountPath: /var/www/html/drop-it
+          name: appdir
+      volumes:
+      - name: appdir
+        persistentVolumeClaim:
+          claimName: dropit-claim-webroot
