@@ -17,9 +17,6 @@ spec:
             containerPort: 8080
           - name: https
             containerPort: 443
-        volumeMounts:
-        - mountPath: /var/www/html/drop-it
-          name: appdir
       - name: dropit-app
         image: puraskar/dropit-app:1.6
         volumeMounts:

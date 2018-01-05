@@ -51,7 +51,6 @@ RUN sed -i "s/memory_limit = 128M/memory_limit = 256M /g" /etc/php.ini
 RUN chmod -R 777 /var/lib/php
 RUN chown apache:apache -R /var/lib/php
 
-ADD app /var/www/html/drop-it
 ADD log.conf /usr/local/etc/php-fpm.d/zz-log.conf
 ADD php-fpm.conf /etc/php-fpm.d/www.conf
 
